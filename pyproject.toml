@@ -1,0 +1,42 @@
+[project]
+name = "parallelism-in-python"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "Khalid Zubair", email = "thefattman@refactorart.ist"},
+]
+dependencies = [
+    "requests>=2.32.3",
+    "loguru>=0.7.2",
+    "httpx>=0.27.0",
+    "types-requests>=2.32.0.20240712",
+]
+requires-python = "==3.12.*"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = true
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "ruff>=0.5.4",
+    "mypy>=1.11.0",
+]
+[tool.ruff.lint]
+extend-select = [
+    "I",
+    "B",
+    "C4",
+    "PGH",
+    "RUF",
+    "W",
+    "YTT",
+]
+
+[tool.pdm.scripts]
+sequential = { call = "parallelism_in_python.sequential_programming:main" }
+asyncio = { call = "parallelism_in_python.asyncio_programming:main" }
+multithreading = { call = "parallelism_in_python.multi_threading:main" }
+multiprocessing = { call = "parallelism_in_python.multi_processing:main" }
